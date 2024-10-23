@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Developing DS learning Basics I</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/shades-of-purple.css">
+		
+		
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+		
+
+
+
+		
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Diego Viana</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="aboutme.html" class="active">about me</a></li>
+						<li><a href="elements.html">Get in touch</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Developing DS learning Basics I</h1>
+							<span class="image-fit"><img src="images\DS_01\ds_tree.svg" alt="" /></span>
+							<h2>Linear Data Structures</h2>
+							<p>
+								Sequence of data organized linearly or sequentially, where each element is added 
+								to its previous and next adjacents.
+							</p>
+							<h3>Array</h3>
+							<p>
+								An array is a series or list of variables in the memory block that have 
+								the same name and the same data type, but are differentiated with special 
+								numbers called #subscripts, also called index. The index is a number 
+								that indicates the position of the item.
+							</p>
+							<span class="images"><img src="images\DS_01\ds_1.svg" alt="" /></span>
+							<p>
+								For example, it could represent an employee identification list or a price 
+								list for items for sale.
+							</p>
+							<p>
+								It is widely used in various applications, such as:
+							</p>
+							<ul>
+								<li>Storing data for processing</li>
+								<li>Implementation of data structures such as #Filas and #Pilas</li>
+								<li>Representing data in tables and arrays</li>
+								<li>Creating dynamic data structures such as linked lists and trees</li>
+							</ul>
+							<h3>Array types</h3>
+							<h4>1-dimension array </h4>
+							<p>Stores only one row of elements</p>
+							<h4>Multi-dimensional array </h4>
+							<p>Stores multiple rows of elements</p>
+
+							<h3>Basic operations in the Arrays</h3>
+							<h4>Transversal</h4>
+							<p>Visiting each element of an array in a specific order:</p>
+							<li><strong>Sequential</strong>: Where each element is traversed in order from first to last.</li>
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def sequential(array):
+		for element in array
+			print(element)
+
+	arr = [2, 4, 5, 10, 15, 3]
+	sequential(arr)
+									</code>
+								</pre>
+							</div>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>[2, 4, 5, 10, 15, 3]</code>
+								  	</div>
+							</details>
+							<li><strong>Reverse</strong>: Where each element is traversed in order from last to first.</li>
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def reverse(array):
+		for element in array[::-1]:
+		print(element)
+
+	arr = [2, 4, 5, 10, 15, 3]
+	reverse(arr)
+									</code>
+								</pre>
+							</div>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>[3, 15, 10, 5, 4, 2]</code>
+								  	</div>
+							</details>
+
+							<h4>Insertion</h4>
+							<p>
+								Adding a new element to the array at a specific index,
+								where we call the function to insert a specific value into the array on the desired line.	
+							</p>
+							<p> 
+								our array <code>2, 4, 5, 10, 15, 3</code> will receive the value <code>10</code> in position <code>3</code>
+							</p>
+
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def insert(array, element, position):
+		if position < 0 or position > len(array):
+			print("Invalid position")
+		else:
+			array.insert(position, element)
+	
+	arr = [2, 4, 5, 10, 15, 3]
+	insert(arr, 10, 3)
+	print(arr)
+									</code>
+								</pre>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>[2, 4, 5, 10, 15, 3]</code>
+								  	</div>
+							</details>
+
+							</div>
+
+							<h4>Delete</h4>
+							<p>
+								Removing an array element from a specific index. Let's remove position <code>2</code> from <code>arr</code>
+							</p>
+							
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def remove(array, index):
+		if index < 0 or index >= len(array):
+			print(“Invalid index”)
+		else:
+			array.pop(index)
+
+	arr = [2, 4, 5, 10, 10, 15, 3]
+	remove(arr, 2)
+	print(arr)
+									</code>
+								</pre>
+							</div>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>[2, 4, 10, 10, 15, 3]</code>
+								  	</div>
+							</details>
+
+							<h4>Search</h4>
+							<p>
+								Finding the index of an array element. What happens if we look for index <code>4</code>?
+							</p>
+							
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def search(array, value):
+		for i in range(len(array)):
+			if array[i] == value:
+				return i
+		return -1  
+
+	arr = [2, 4, 10, 10, 15, 3]
+	index = search(arr, 4)  
+	value = search(arr, index)
+
+	print(f"Value found at position {index} is {value}")
+
+									</code>
+								</pre>
+							</div>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>Value found at position 4 is 15</code>
+								  	</div>
+							</details>
+
+							<h4>Update</h4>
+							<p>
+								updates the value of an array at the given index and returns a 
+								message confirming the change. If the index is invalid, it reports the error and keeps the array unchanged.
+							</p>
+							<p> Let's update position <code>3</code>with value <code>15</code>.</p>
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def update(array, index, new_value):
+		if 0 <= index < len(array):
+			array[index] = new_value
+			return new_value
+
+	arr = [2, 4, 10, 10, 15, 3]
+	index = 3
+	new_value = 15
+
+	update(arr, index, new_value)
+
+	print(f"Element at index {index} updated to {new_value}", arr)
+
+									</code>
+								</pre>
+							</div>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>Element at index 3 updated to 15<br>
+											Updated array: [2, 4, 10, 15, 15, 3]
+									    </code>
+								  	</div>
+							</details>
+
+							<h4>Update</h4>
+							<p>
+								updates the value of an array at the given index and returns a 
+								message confirming the change. If the index is invalid, it reports the error and keeps the array unchanged.
+							</p>
+							<div class="code">
+								<pre>
+									<code class="language-py">
+	def display(array):
+		return array
+
+	arr = [2, 4, 10, 10, 15, 3]
+	message = display(arr)
+	print(message)
+
+									</code>
+								</pre>
+							</div>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>
+											Element 15 removed from queue.<br>
+											Current queue:<br>
+											6 2 9 4
+									    </code>
+								  	</div>
+							</details>
+
+							<h2>References</h2>
+							<p>1. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. Introduction to Algorithms, Third Edition (3rd. ed.). The MIT Press, 2009.</p>
+							<p>2. GONZAGA DE OLIVEIRA, S. L. Algoritmos e seus fundamentos. Lavras: Editora UFLA, 2011.</p>
+							<p>3. SZWARCFITER, Jayme L.; MARKENZON, Lilian. Estruturas de Dados e Seus Algoritmos. Rio de Janeiro: LTC, 2010. E-book. ISBN 978-85-216-2995-5.</p>
+
+						</div>
+
+						<div style="text-align: center; margin-top: 20px;">
+							<button class: onclick="history.back();" style="cursor: pointer;  margin-bottom: 20px;">Back</button>
+						</div>
+					</section>
+					
+					
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Diego Viana. All rights reserved.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+				  hljs.highlightAll();
+				});
+			</script>
+			<script src="assets\js\scroll.js"></script>
+
+			
+			<button id="scroll-to-top" title="Go to top"><span>↺</span></button>
+
+			
+
+	</body>
+</html>

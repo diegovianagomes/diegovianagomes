@@ -1,0 +1,628 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Developing DS learning Basics I</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/shades-of-purple.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+		
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" 
+        		onload="renderMathInElement(document.body);"></script>
+		
+
+
+
+		
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Diego Viana</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="aboutme.html" class="active">about me</a></li>
+						<li><a href="elements.html">Get in touch</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Developing DS learning Basics II</h1>
+							<span class="images"><img src="images\DS_01\ds_tree.svg" alt="" /></span>
+							
+							
+							<h2>Dynamic Data Structures</h2>
+							<details>
+								<summary>Summary</summary>
+									<div class="details-content">
+										<ul>
+											<li><a href="#queues">Queues</a></li>
+											<li><a href="#stacks">Stacks</a></li>
+											<li><a href="#linked-lists">Linked Lists</a></li>
+											<li><a href="#singly-linked-lists">Singly Linked Lists</a></li>
+										</ul>
+								  	</div>
+							</details>
+							<p>
+							In this type of data structure, the dimension is not fixed 
+							and can be updated during operation time, taking into account 
+							memory efficiency and code complexity.
+							</p>
+							<!-- Queues div -->
+							<div id="queues">
+								<h3>Queues</h3>
+							<p>
+								In a queue, the first one in is the first one out, implementing the *first-in, 
+								first-or* or *FIFO* policy.The operation to insert a queue is *Enqueue* 
+								and the operation to delete it is *Dequeue*.
+							</p>
+							<img class="image-fit2" src="images/DS_01/ds_2.svg" alt="">
+							<p>
+								The example above is a circular queue with a fixed, circular size, meaning 
+								that when we reach the end of the array, we return to the beginning, if there 
+								is space available The implementation uses an array $Q\left[1...15\right]$. 
+								The elements of the row appear only in the lightly shaded positions. The first row 
+								has 5 elements, located at $Q\left[10...14\right]$. The second row below is the 
+								new configuration after the calls ENQUEUE $Q\left(17\right)$, ENQUEUE $Q\left(3\right)$ 
+								and ENQUEUE $Q\left(5\right)$. The third and final one is the configuration of the 
+								queue after calling DEQUEUE.$Q\left(15\right)$, which was previously the head of 
+								the queue and the new head has the key 6. For this “Queue” class, let's first 
+								define that it is an array, its maximum size, the indexes of *head* and *tail* 
+								and the current size of the queue.
+							</p>
+							<pre>
+								<code class="languages-py">
+	def __init__(self, capacity):
+		self.capacity = capacity
+		self.fila = [None] * capacity
+		self.head = 0
+		self.tail = 0
+		self.tamanho = 0
+								</code>
+							</pre>
+							<p>
+								Next, let's define that our queue is empty	
+							</p>
+							<pre>
+								<code class="languages-py">
+	def empty(self):
+		return self.size == 0  
+								</code>
+							</pre>
+							<p>
+								And another definition that it will be full.
+							</p>
+							<pre>
+								<code class="languages-py">
+	def full(self):
+		return self.size == self.capacity 
+								</code>
+							</pre>
+							<p>
+								Next we will define the main operations of our queue and first we will do the *Enqueue*
+								 which will insert the element in the *tail* position and increment it by one element, 
+								 increasing the queue.
+							</p>
+							<pre>
+								<code class="languages-py">
+	def enqueue(self, element):
+		if self.cheia():
+			print(“Error: The queue is full”)
+		else:
+			self.queue[self.tail] = element  
+			self.tail = (self.tail + 1) % self.capacity
+			self.size += 1 
+
+			print(f“Element {element} added to queue.”)
+								</code>
+							</pre>
+							<p>
+								To define the *Dequeue* function we need to get the element from the *head* position and 
+								remove it, from there we pass the position to the next element and decrease the queue.
+							</p>
+							<pre>
+								<code class="languages-py">
+	def dequeue(self):
+		if self.empty():
+			print(“Error: Queue is empty”)
+		else:
+			element = self.queue[self.head] 
+			self.queue[self.head] = None 
+			self.head = (self.head + 1) % self.capacity 
+			self.size -= 1 
+			print(f“Element {element} removed from queue.”)
+
+			return element
+								</code>
+							</pre>
+							<p>
+								The next step will be to define a function to show the actions being performed
+							</p>
+							<pre>
+								<code class="languages-py">
+	def show(self):
+		if self.empty():
+			print(“Empty queue”)
+		else:
+			print(“Current queue:”)
+			i = self.head
+			for _ in range(self.size):
+				print(self.queue[i], end=” ”)
+				i = (i + 1) % self.capacity
+			print()
+								</code>
+							</pre>
+							<p>
+								Finally, let's implement our queue with an array $Q\left[1...15\right]$
+							</p>
+							<pre>
+								<code class="languages-py">
+	queue = Queue(5)
+								</code>
+							</pre>
+							<p>
+								The Enqueue will be done by adding the desired number
+							</p>
+							<pre>
+								<code class="languages-py">
+	queue.enqueue(15)
+	queue.enqueue(6)
+	queue.enqueue(2)
+	queue.enqueue(9)
+	queue.enqueue(4)
+								</code>
+							</pre>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>
+											Element 15 added to queue.<br>
+											Element 6 added to queue.<br>
+											Element 2 added to queue.<br>
+											Element 9 added to queue.<br>
+											Element 4 added to queue.<br>
+											<br>
+											Current queue:<br>
+											15 6 2 9 4
+									    </code>
+								  	</div>
+							</details>
+								</code>
+							</pre>
+							<p>
+								And we can ask it to show our queue:
+							</p>
+							<pre>
+								<code class="languages-py">
+	queue.show()
+								</code>
+							</pre>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>
+											Current queue:<br>
+											15 6 2 9 4
+									    </code>
+								  	</div>
+							</details>
+
+							<p>
+								At this point with tail and head* defined our Dequeue can follow the “first-in, first-out” policy.
+							</p>
+							<pre>
+								<code class="languages-py">
+	queue.dequeue()
+	queue.show()
+								</code>
+							</pre>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>
+											Element 15 removed from queue.<br>
+											Current queue:<br>
+											6 2 9 4
+									    </code>
+								  	</div>
+							</details>
+							</div>
+							<!-- Stacks div -->
+							<div id="stacks">
+								<h2>Stacks</h2>
+								<p>
+									In the stack, the last one in (Push) is the first one out (Pop), implementing 
+									the last-in, first-out or LIFO policy. The insertion operation on the stack 
+									is commonly known as PUSH and the deletion operation as POP, alluding to physical 
+									stacks such as the stack of plates, where the order in which a plate is removed
+									 (POP) from the stack is inverse to the order in which it was placed (PUSH) 
+									 on the stack, because only the top one is accessible.
+								</p>
+
+								<p>
+									In the example we have the implementation of an array of an “S” Stack with 4 initial 
+									elements $S\left[1...\text{S.top} \right]$. When $S.top=0$ our stack is empty. The 
+									top element is 9, then two “Push” calls are made, (S,17) and (S,3), giving the 
+									stack 6 elements and finally a “POP” call is made, removing (S,3) and leaving 
+									(S.17) as the last element of the stack. To implement a “Stack” class 
+									of this array in python, we first define the array to store the elements, the 
+									maximum size of the stack and indicate the top of the stack, the “-1” indicates 
+									that the stack is empty.
+								</p>
+								<pre>
+									<code class="languages-py">
+	def __init__(self, capacity):
+		self.capacity = capacity  
+		self.stack = [None] * capacity  
+		self.top = -1	
+									</code>
+								</pre>
+
+								<p>
+									Then we define the empty array:
+								</p>
+								<pre>
+									<code class="languages-py">
+	def empty(self):
+		return self.top == -1
+									</code>
+								</pre>
+
+								<p>
+									Also, let's define when our stack will be full.
+								</p>
+								<pre>
+									<code class="languages-py">
+	def full(self):
+		return self.top == self.capacity - 1 
+									</code>
+								</pre>
+
+								<p>
+									Once this is done, let's define the main functions. For the Push function, 
+									we'll work with incrementing at the top and inserting the element at the top 
+									of the stack;
+								</p>
+								<pre>
+									<code class="languages-py">
+	def push(self, element):
+		if self.full():
+			print("Error: The stack is full")
+		else:
+			self.top += 1
+			self.stack[self.top] = element
+			print(f"Element {element} added to the top {self.top}")
+									</code>
+								</pre>
+
+								<p>
+									In the POP function, we take the top element, remove an element and decrement the top.
+								</p>
+								<pre>
+									<code class="languages-py">
+	def pop(self):
+		if self.empty():
+			print("Error: The stack is empty")
+		else:
+			element = self.stack[self.top]
+			self.stack[self.top] = None
+			self.top -= 1
+			print(f"Element {element} removed from top {self.top + 1}")
+			return element
+									</code>
+								</pre>
+
+								<p>
+									We have also defined a function to show our actions and display them.
+								</p>
+								<pre>
+									<code class="languages-py">
+	def show(self):
+		if self.empty():
+			print("Empty stack")
+		else:
+			print("Current stack state:")
+			for i in range(self.top + 1):
+				print(f"Position {i + 1}: {self.stack[i]}")
+									</code>
+								</pre>
+
+								<p>
+									The next step will be to implement it in our example where we have an Array <code>S={15,6,2,9}</code> 
+									with a capacity of <code>7</code> positions.
+								</p>
+								<pre>
+									<code class="languages-py">
+	capacity = 7
+	stack = Stack(capacity)
+									</code>
+								</pre>
+
+								<p>
+									To do the push we just need to add the desired number
+								</p>
+								<pre>
+									<code class="languages-py">
+stack.push(15)
+stack.push(6)
+stack.push(2)
+stack.push(9)
+stack.show()
+									</code>
+								</pre>
+								<details>
+									<summary>Click here to see result</summary>
+										<div class="details-content">
+											<code>
+												Current stack state:<br>
+												<br>
+												Position 1: 15<br>
+												Position 2: 6<br>
+												Position 3: 2<br>
+												Position 4: 9<br>
+											</code>
+										  </div>
+								</details>
+
+							
+
+							<p>
+								To make the pop, as we're on a stack and “last-in first-out”, we don't need to specify who 
+								we're going to delete
+							</p>
+							<pre>
+								<code class="languages-py">
+stack.pop()
+stack.show()
+								</code>
+							</pre>
+							<details>
+								<summary>Click here to see result</summary>
+									<div class="details-content">
+										<code>
+											Element 9 removed from top 3<br>
+											<br>
+											Current stack state:<br>
+											Position 1: 15<br>
+											Position 2: 6<br>
+											Position 3: 2
+										</code>
+									  </div>
+							</details>
+						</div>
+						<div id="linked-lists">
+							<h2>Linked Lists</h2>
+							<p>
+								A linked list is a type of data structure in which the elements are not stored in a 
+								contiguous location, but are linked together using pointers.  It forms a series of connected nodes, 
+								each of which stores data and the address of the next node.
+							</p>
+
+							<p>A linked list typically consists of two components</p>
+							<ul>
+								<li> Data: which holds the current value or data associated with the node.</li>
+								<li>Next pointer or Reference: which stores the memory address of the next node in the sequence.</li>
+							</ul>
+							<p>
+								They have head and tail, i.e. they are accessed by the *head*, which points to the first node in the list.
+								The last node in the list points to a Null or nullptr element, indicating the end of the list, this node is known as a tail node.
+								The reason it's preferable to use linked lists rather than an array is because it's easier to insert and delete.
+							</p>	
+
+							<div id="singly-linked-lists">
+								<h2>Singly linked list</h2>
+								<p>
+									In a singly linked list, each node has a reference to the next node in the sequence. Passing is done in a direct direction. 
+								Let's use everyday tasks as examples:
+								</p>
+
+								<p>
+									Each node represents a task for the day and the arrows on the nodes represent the order of the tasks.
+									The start of the day is *head* which points to the first task of the day and the end of the day is *null*. 
+									With practical applications in mind, there is flexibility because it is easy to add and remove tasks at any 
+									point in the day, yet the tasks follow a natural order, reflecting the structure of the linked list.
+								</p>
+
+								<p>
+									Without thinking about insertions or additions, we can implement our DailyRoutine as follows:
+									We need to create a class for the Tasks node, which will have the task of the day the pointer to the next task:
+								</p>
+								<p>
+									In the POP function, we take the top element, remove an element and decrement the top.
+								</p>
+								<pre>
+									<code class="languages-py">
+	class Task:
+		def __init__(self, name):
+			self.name = name
+			self.next = None
+									</code>
+								</pre>
+
+								<p>
+									Now let's create our Daily Routine class in which we'll manage the sequence of tasks.
+								</p>
+								<pre>
+									<code class="languages-py">
+	class DailyRoutine:
+		def __init__(self):
+			self.start = None
+									</code>
+								</pre>
+
+
+								<p>
+									Within this class we are going to define two functions and the first 
+									is the creation of tasks and the connection between them, note that in 
+									the connection we have the name of the task and the pointer <code>nameTask.pointer</code>>:
+								</p>
+								<pre>
+									<code class="languages-py">
+	def create_task(self):
+		
+		# Create the tasks								
+		start_of_day = Task("Start of day")
+		wake_up = Task("Wake up")
+		drink_coffee = Task("Drink coffee")
+		meeting = Task("Meeting")
+		lunch = Task("Lunch")
+
+		# Connect the tasks
+		self.start = start_of_day
+		start_of_day.next = wake_up
+		wake_up.next = drink_coffee
+		drink_coffee.next = meeting
+		meeting.next = lunch
+									</code>
+								</pre>
+
+
+								<p>
+									The second definition to be made will be the action of showing the tasks
+								</p>
+								<pre>
+									<code class="languages-py">
+	def show_task(self):
+		current_task = self.start
+		while current_task:
+			print(current_task.name)
+			if current_task.next:
+				print("|")
+			current_task = current_task.next
+								
+									</code>
+								</pre>
+
+
+								<p>
+									This can be implemented with the commands below:
+								</p>
+								<pre>
+									<code class="languages-py">
+	routine = DailyRoutine()
+	routine.create_task()
+	routine.show_task()
+									</code>
+								</pre>
+
+
+								<p>
+									As I said about flexibility, we can implement the 
+									action of adding a task. I won't worry about its 
+									position, we'll just add it
+								</p>
+								<pre>
+									<code class="languages-py">
+	def add_task(self, task_name):
+		new_task = Task(task_name)
+		if self.start is None:
+			self.start = new_task
+		else:
+			current_task = self.start
+			while current_task.next:
+				current_task = current_task.next
+			current_task.next = new_task
+			
+	print("\n>> Adding new task 'Exercise'")
+	routine.add_task("Exercise")
+	print("\n")
+	routine.show_task()
+			
+									</code>
+								</pre>
+								<details>
+									<summary>Click here to see result</summary>
+										<div class="details-content">
+											<code>
+												>> Adding new task 'Exercise'<br>
+												<br>
+												<br>
+													Start of day<br>
+													|<br>
+													Wake up<br>
+													|<br>
+													Drink coffee<br>
+													|<br>
+													Meeting<br>
+													|<br>
+													Lunch<br>
+													|<br>
+													Exercise<br>
+											</code>
+										  </div>
+								</details>
+							</div>
+								
+						</div>
+						<div id="doubly-linked-lists">
+							<h2>Doubly linked list</h2>
+
+						<h2>References</h2>
+						<p>1. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. Introduction to Algorithms, Third Edition (3rd. ed.). The MIT Press, 2009.</p>
+						<p>2. GONZAGA DE OLIVEIRA, S. L. Algoritmos e seus fundamentos. Lavras: Editora UFLA, 2011.</p>
+						<p>3. SZWARCFITER, Jayme L.; MARKENZON, Lilian. Estruturas de Dados e Seus Algoritmos. Rio de Janeiro: LTC, 2010. E-book. ISBN 978-85-216-2995-5.</p>
+
+
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Diego Viana. All rights reserved.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+				  hljs.highlightAll();
+				});
+			</script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+						delimiters: [
+							{left: "$$", right: "$$", display: true},
+							{left: "$", right: "$", display: false}
+						]
+					});
+					hljs.highlightAll();
+				});
+			</script>
+
+			<script src="assets\js\scroll.js"></script>
+
+			
+			<button id="scroll-to-top" title="Go to top"><span>↺</span></button>
+	</body>
+</html>
