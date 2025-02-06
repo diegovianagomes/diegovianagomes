@@ -13,8 +13,8 @@ Bem-vindo ao meu perfil no GitHub! Aqui, você encontrará informações sobre m
 ---
 
 <div align="center">  
-  <img width="49%" height="195px" src="https://github-readme-stats.vercel.app/api?username=julianasdev&show_icons=true&count_private=true&hide_border=true&title_color=ADD8E6&icon_color=4682B4&text_color=ffffff&bg_color=0d1117" alt="Juliana Sousa github stats" /> 
-  <img width="41%" height="195px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=julianasdev&layout=compact&hide_border=true&title_color=ADD8E6&text_color=ffffff&bg_color=0d1117" />
+  <img width="49%" height="195px" src="https://github-readme-stats.vercel.app/api?username=diegovianagomes&show_icons=true&count_private=true&hide_border=true&title_color=ADD8E6&icon_color=4682B4&text_color=ffffff&bg_color=0d1117" alt="Diego Viana´s github stats" /> 
+  <img width="41%" height="195px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=diegovianagomes&layout=compact&hide_border=true&title_color=ADD8E6&text_color=ffffff&bg_color=0d1117" />
 </div>
 
 ---
