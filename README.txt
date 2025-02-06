@@ -1,8 +1,3 @@
-👋 ### Olá! Eu sou Diego Viana
-
-
-📋 Sobre Mim
-Sou um profissional apaixonado por tecnologia, arquitetura e desenvolvimento de sistemas. Com uma trajetória diversificada em gestão de projetos, design arquitetônico e desenvolvimento de soluções digitais, busco sempre entregar valor através da inovação e criatividade.
 
 # Meu Perfil Profissional
 
