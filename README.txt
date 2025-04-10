@@ -3,7 +3,7 @@
 </div>
 <h1 align="center"> 👩‍💻 Seja bem-vindo(a) ao meu GitHub! </h1> 
 <p align="center"><i>Desenvolvedor Full Stack | Mestrando em Ciência da Computação(UFLA) e Pós Graduado em Ciência de Dados(UNESC)</i></p>
--- 
+--- 
 # Meu Perfil Profissional
 
 Bem-vindo ao meu perfil no GitHub! Aqui, você encontrará informações sobre meus projetos, habilidades, e minha trajetória profissional. Com uma sólida formação em Arquitetura e Desenvolvimento de Sistemas, tenho experiência em coordenação de projetos, desenvolvimento de soluções personalizadas e implementação de tecnologias para aplicações mobile e web.
