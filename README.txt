@@ -1,5 +1,9 @@
+<div align="center">
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWk2MGhnNjBkMjF5azNzdWd6cndiYWthdzRoNWZsbGIwdnpnM2lybyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26xBwdIuRJiAIqHwA/giphy.gif" width="100" alt="Gif com saudações" />
+</div>
 <h1 align="center"> 👩‍💻 Seja bem-vindo(a) ao meu GitHub! </h1> 
 <p align="center"><i>Desenvolvedor Full Stack | Mestrando em Ciência da Computação(UFLA) e Pós Graduado em Ciência de Dados(UNESC)</i></p>
+-- 
 # Meu Perfil Profissional
 
 Bem-vindo ao meu perfil no GitHub! Aqui, você encontrará informações sobre meus projetos, habilidades, e minha trajetória profissional. Com uma sólida formação em Arquitetura e Desenvolvimento de Sistemas, tenho experiência em coordenação de projetos, desenvolvimento de soluções personalizadas e implementação de tecnologias para aplicações mobile e web.
