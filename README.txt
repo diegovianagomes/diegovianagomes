@@ -13,5 +13,5 @@ Welcome to my GitHub profile! Here, you will find information about my projects,
 *   🚀  I'm currently working on [Potato Project](http://github.com/diegovianagomes/potato-app)
 *   🧠  I'm learning Kotlin
 *   🤝  I'm open to collaborating on Data Science, Open Source Projects, Web and Mobile Development
-*   ⚡  I´d secret love Low-level programming languages### Skills 
+*   ⚡  I´d secret love Low-level programming languages
 
